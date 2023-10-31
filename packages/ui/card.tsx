@@ -1,27 +1,25 @@
-import * as React from "react";
+import type { FC, PropsWithChildren } from 'react'
+import './card.css'
+import { useGetFeatureFlag } from './UIFF'
 
-export function Card({
-  className,
-  title,
-  children,
-  href,
-}: {
-  className?: string;
-  title: string;
-  children: React.ReactNode;
-  href: string;
-}): JSX.Element {
+export interface CardProps extends PropsWithChildren {
+  className?: string
+  title: string
+}
+
+export const Card: FC<CardProps> = ({ className, title, children }) => {
+  const goPink = useGetFeatureFlag('pink_card', false)
+  const goHorizontal = useGetFeatureFlag('horizontal_card', false)
+
+  const theme = goPink ? 'goPink' : ''
+  const layout = goHorizontal ? 'goHorizontal' : 'goVertical'
+
   return (
-    <a
-      className={className}
-      href={`${href}?utm_source=create-turbo&utm_medium=basic&utm_campaign=create-turbo"`}
-      rel="noopener noreferrer"
-      target="_blank"
-    >
-      <h2>
-        {title} <span>-&gt;</span>
-      </h2>
-      <p>{children}</p>
-    </a>
-  );
+    <section className={`card ${className} ${theme} ${layout}`}>
+      <div className="header">
+        <h2>{title}</h2>
+      </div>
+      <div className="body">{children}</div>
+    </section>
+  )
 }

@@ -1,0 +1,39 @@
+.card {
+  border: 1px solid #999999;
+  border-radius: 5px;
+  display: grid;
+}
+
+.card.goVertical {
+  grid-template-rows: auto 1fr;
+  max-width: 300px;
+}
+
+.card.goHorizontal {
+  grid-template-columns: 4rem 1fr;
+  max-width: 500px;
+}
+
+.card.goHorizontal .header h2 {
+  writing-mode: vertical-lr;
+  rotate: 180deg;
+}
+
+.card .header {
+  padding: 1rem;
+  border-bottom: 1px solid #999999;
+  background: #cccccc;
+}
+
+.card .body {
+  padding: 1rem;
+  min-height: 200px;
+}
+
+.darkMode .card .header {
+  background: #666666;
+}
+
+.card.goPink {
+  color: hotpink;
+}
