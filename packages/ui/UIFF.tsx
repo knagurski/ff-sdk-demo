@@ -20,7 +20,6 @@ export const useGetFeatureFlag = (
   defaultValue?: any
 ): any => {
   const { flags } = useContext(UIFFContext)
-  console.log('FLAGS', flags, flagName)
 
   return flagName in flags ? flags[flagName] : defaultValue
 }

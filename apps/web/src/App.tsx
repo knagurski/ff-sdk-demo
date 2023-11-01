@@ -8,7 +8,7 @@ import { useState } from 'react'
 import GetUIFFFlags from './components/GetUIFFFlags.tsx'
 import { UIFFProvider } from 'ui/UIFF.tsx'
 import Layout from './components/Layout.tsx'
-import { Card } from 'ui'
+import MyCard from './components/MyCard.tsx'
 
 const target: FFContextProviderProps['target'] = {
   name: 'My Target',
@@ -21,9 +21,7 @@ const targetUIFF: FFContextProviderProps['target'] = {
 }
 
 function App() {
-  const [designSystemFlags, setDesignSystemFlags] = useState<
-    Record<string, any>
-  >({})
+  const [uiLibraryFlags, setUiLibraryFlags] = useState<Record<string, any>>({})
 
   return (
     <>
@@ -32,11 +30,11 @@ function App() {
         target={target}
         options={{ cache: true }}
       >
-        <UIFFProvider flags={designSystemFlags}>
+        <UIFFProvider flags={uiLibraryFlags}>
           <Layout>
             <Header />
             <article>
-              <Card title="My Card">This is some content of the card</Card>
+              <MyCard />
             </article>
           </Layout>
         </UIFFProvider>
@@ -47,7 +45,7 @@ function App() {
         target={targetUIFF}
         options={{ cache: true }}
       >
-        <GetUIFFFlags onFlagsChange={(flags) => setDesignSystemFlags(flags)} />
+        <GetUIFFFlags onFlagsChange={(flags) => setUiLibraryFlags(flags)} />
       </FFContextProvider>
     </>
   )
