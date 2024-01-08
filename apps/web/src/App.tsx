@@ -9,6 +9,9 @@ import GetUIFFFlags from './components/GetUIFFFlags.tsx'
 import { UIFFProvider } from 'ui/UIFF.tsx'
 import Layout from './components/Layout.tsx'
 import MyCard from './components/MyCard.tsx'
+import ControlCard from './components/ControlCard.tsx'
+import ReportCard from './components/ReportCard.tsx'
+import ControlCardWithClient from './components/ControlCardWithClient.tsx'
 
 const target: FFContextProviderProps['target'] = {
   name: 'My Target',
@@ -35,6 +38,9 @@ function App() {
             <Header />
             <article>
               <MyCard />
+              <ControlCard />
+              <ReportCard />
+              <ControlCardWithClient />
             </article>
           </Layout>
         </UIFFProvider>
